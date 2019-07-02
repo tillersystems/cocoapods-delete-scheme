@@ -1,1 +1,1 @@
-require 'cocoapods-delete-scheme/command/scheme'
+#require 'cocoapods-delete-scheme/command/scheme'
