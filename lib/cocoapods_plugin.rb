@@ -2,9 +2,9 @@ require 'cocoapods-delete-scheme/command'
 
 Pod::HooksManager.register('cocoapods-delete-scheme', :post_install) do |context, user_options|
     require 'fileutils'
-  
+
     schemes_dir = Xcodeproj::XCScheme.user_data_dir(context.pods_project.path)
-  
+
     Pod::UI.puts "Deleting all schemes for 'Pods' project, #{schemes_dir}"
     FileUtils.remove_dir(schemes_dir) if File.directory?(schemes_dir)
 
@@ -16,7 +16,7 @@ Pod::HooksManager.register('cocoapods-delete-scheme', :post_install) do |context
     xcschememanagement['SuppressBuildableAutocreation'] = {}
 
     context.pods_project.targets.each do | target |
-        Pod::UI.puts "#{target.uuid}"
+        #Pod::UI.puts "#{target.uuid}"
 
         xcschememanagement['SuppressBuildableAutocreation']["#{target.uuid}"] = {}
         xcschememanagement['SuppressBuildableAutocreation']["#{target.uuid}"]['primary'] = true
